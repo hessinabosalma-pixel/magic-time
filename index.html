@@ -1,1 +1,75 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" manifest="cache.manifest">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Time Host 🎮</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a0933, #05010d);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-y: auto;
+            padding: 20px 0;
+        }
+        .card {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(157, 78, 221, 0.2);
+            box-shadow: 0 0 30px rgba(157, 78, 221, 0.3);
+            backdrop-filter: blur(10px);
+            max-width: 650px;
+            width: 90%;
+        }
+        h1 { font-size: 2.5rem; color: #e0aaff; margin-bottom: 5px; text-shadow: 0 0 15px #9d4edd; }
+        .status { color: #c77dff; font-size: 1.1rem; margin-bottom: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 20px; }
+        .btn {
+            background: #7b2cbf; color: white; border: none; padding: 12px;
+            font-size: 0.95rem; border-radius: 8px; cursor: pointer; transition: 0.3s ease;
+        }
+        .btn:hover { background: #9d4edd; transform: scale(1.03); }
+        .btn-auto { grid-column: 1 / -1; background: #2a9d8f; font-weight: bold; }
+        .btn-auto:hover { background: #264653; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>MAGIC TIME</h1>
+        <div class="status" id="cacheStatus">جاري التحقق من وضع الكاش الفسفوري... ⏳</div>
+        
+        <div class="grid">
+            <button class="btn btn-auto" onclick="autoDetectAndLoad()">⚡ كسر حماية تلقائي (Auto Detect)</button>
+            <button class="btn" onclick="loadExploit('7.02')">GoldHEN 7.02</button>
+            <button class="btn" onclick="loadExploit('7.55')">GoldHEN 7.55</button>
+            <button class="btn" onclick="loadExploit('9.00')">GoldHEN 9.00</button>
+            <button class="btn" onclick="loadExploit('9.60')">GoldHEN 9.60</button>
+            <button class="btn" onclick="loadExploit('10.01')">GoldHEN 10.01</button>
+            <button class="btn" onclick="loadExploit('11.00')">GoldHEN 11.00</button>
+            <button class="btn" onclick="loadExploit('12.00')">GoldHEN 12.00</button>
+            <button class="btn" onclick="loadExploit('13.00')">GoldHEN 13.00</button>
+            <button class="btn" onclick="loadExploit('13.52')">GoldHEN 13.52 (بدون فلاشة)</button>
+        </div>
+    </div>
+
+    <!-- استدعاء الملف الخارجي للثغرات المدمجة جنب الاندكس -->
+    <script src="magic_exploits.js"></script>
+    <script>
+        var cacheStatus = document.getElementById("cacheStatus");
+        if (window.applicationCache) {
+            window.applicationCache.ondownloading = function() { cacheStatus.innerHTML = "جاري تحميل وتخزين الثغرة في الكاش الفسفوري... ⏳"; };
+            window.applicationCache.onupdateready = function() { cacheStatus.innerHTML = "تم تحديث الكاش بنجاح! أعد تشغيل الصفحة. ✔️"; window.applicationCache.swapCache(); location.reload(); };
+            window.applicationCache.oncached = function() { cacheStatus.innerHTML = "الهوست جاهز للعمل بدون إنترنت بالكامل! ✔️"; };
+        }
+    </script>
+</body>
+</html>
