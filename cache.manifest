@@ -1,0 +1,9 @@
+CACHE MANIFEST
+# Magic Time Host - v1.5.0
+
+CACHE:
+index.html
+magic_exploits.js
+
+NETWORK:
+*
